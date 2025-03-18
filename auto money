@@ -1,0 +1,191 @@
+local ply = game:GetService("Players").LocalPlayer
+local char = ply.Character or ply.CharacterAdded:Wait()
+
+repeat
+	task.wait()
+until game:IsLoaded()
+
+
+
+
+local GuiService = game:GetService('GuiService')
+local Side = ply.PlayerGui:WaitForChild("Side",math.huge)
+if Side:FindFirstChild("TextButton") then
+	Side:FindFirstChild("TextButton"):Destroy()	
+end
+
+
+local Inventory = Side:FindFirstChild("Main"):FindFirstChild("Layout").Inventory
+local VirtualInputManager = game:GetService('VirtualInputManager')
+
+
+
+GuiService.SelectedObject = Inventory
+GuiService.SelectedObject = Inventory
+VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+task.wait(.001)
+GuiService.SelectedObject = nil
+
+
+
+local ScreenGui = Instance.new("ScreenGui",ply.PlayerGui)
+local Frame = Instance.new("Frame",ScreenGui)
+
+Frame.Size = UDim2.new(1, 0,1, 0)
+
+
+local Units 
+
+repeat
+	Units = ply.PlayerGui:FindFirstChild("Units")
+	task.wait()
+until Units
+
+
+
+task.spawn(function()
+	repeat
+		for _,v in Units:GetDescendants() do
+			if v:IsA("TextButton") then
+				local Img : ImageLabel = v:FindFirstChild("ImageLabel")
+				if Img then
+					if Img.Image == "rbxassetid://17860233849" then
+						GuiService.SelectedObject = v
+						GuiService.SelectedObject = v
+						VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+						VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+						task.wait(.001)
+						GuiService.SelectedObject = nil
+					end
+				end
+			end
+		end
+		
+		task.wait()
+	until not Units.Parent
+end)
+
+for _,v in Units:GetDescendants() do
+	if v:IsA("TextButton") and v.Parent and v.Parent.Name == "ScrollingFrame" then
+		GuiService.SelectedObject = v
+		GuiService.SelectedObject = v
+		VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+		VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+		task.wait(.001)
+		GuiService.SelectedObject = nil
+	end
+	
+	
+	
+	if v:IsA("TextButton") then
+		local textLabel = v:FindFirstChild("TextLabel")
+		
+		if textLabel then 
+			if textLabel.Text == "Unequip All" then
+				GuiService.SelectedObject = v
+				GuiService.SelectedObject = v
+				VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+				VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+				task.wait(.001)
+				GuiService.SelectedObject = nil
+			end
+			
+			if textLabel.Text == "Sell Mode" then
+				GuiService.SelectedObject = v
+				GuiService.SelectedObject = v
+				VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+				VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+				task.wait(.001)
+				GuiService.SelectedObject = nil
+			end
+ 		end
+	end
+end
+
+
+for _,v in Units:GetDescendants() do
+	if v:IsA("TextButton") then
+		local textLabel = v:FindFirstChild("TextLabel")
+
+		if textLabel then 
+			if textLabel.Text == "Sell by Rarity" then
+				repeat
+					task.wait()
+				until textLabel
+				
+				GuiService.SelectedObject = v
+				GuiService.SelectedObject = v
+				VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+				VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+				task.wait(.001)
+				GuiService.SelectedObject = nil
+				
+			end
+		end
+	end
+end
+
+local Prompt
+repeat
+	Prompt = ply.PlayerGui:FindFirstChild("Prompt")
+	task.wait()
+until Prompt
+
+for _,v in Prompt:GetDescendants() do
+	if v:IsA("TextButton") then
+		GuiService.SelectedObject = v
+		GuiService.SelectedObject = v
+		VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+		VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+		task.wait(.001)
+		GuiService.SelectedObject = nil
+	end
+end
+
+
+for _, v in Units:GetDescendants() do
+	if v:IsA("TextButton") then
+		local textLabel = v:FindFirstChild("TextLabel")
+		if textLabel and textLabel:IsA("TextLabel") then
+			if string.match(textLabel.Text, "^Sell") and textLabel.Text ~= "Sell by Rarity" then
+				GuiService.SelectedObject = v
+				GuiService.SelectedObject = v
+				VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+				VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+				task.wait(.001)
+				GuiService.SelectedObject = nil
+			end
+		end
+	end
+end
+
+
+wait(1)
+
+
+local Prompt
+repeat
+	Prompt = ply.PlayerGui:FindFirstChild("Prompt")
+	task.wait()
+until Prompt
+
+for _,v in Prompt:GetDescendants() do
+	if v:IsA("TextButton") then
+		local textLabel = v:FindFirstChild("TextLabel")
+		warn(textLabel)
+		if textLabel and textLabel:IsA("TextLabel") then
+			if  textLabel.Text == "Sell Units" then
+				warn(v)
+				GuiService.SelectedObject = v
+				GuiService.SelectedObject = v
+				VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Return, false, game)
+				VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Return, false, game)
+				task.wait(.001)
+				GuiService.SelectedObject = nil
+			end
+		end
+	end
+end
+
+ScreenGui:Destroy()
